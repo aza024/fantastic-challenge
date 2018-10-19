@@ -1,0 +1,8 @@
+td{
+    padding-left: 125px;
+    padding-right: 220px;
+}
+
+td, tr{
+    border: 1px solid black;
+}
