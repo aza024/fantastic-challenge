@@ -1,5 +1,60 @@
 # fantastic
 
+# Fantastic Health Monitor
+
+## About: 
+
+The Fantastic Health Monitor(FHM) monitors requests to Fantastic and has a chart that displays the success and failure rate of requests to the server. FHM makes requests to Fantastic in seven second intervals and checks to see if the request returns a status of 500 or 200. When the request to Fantastic responds with 200, the time is listed in the 'Success' Column of the table. If Fantastic responds with 500, the time that the server responded is listed under the 'Failed' Column. Both columns have times listed in epoch format. A chart using https://www.chartjs.org/ showing the number of times Fantastic succeeded or failed is also displayed on the health monitor page. 
+
+## To set up Fantastic: 
+
+* Clone this repository on your local machine 
+
+* In the directory that this repository is cloned in run: ```pip3 install```, then ```python3 main.py```
+
+* To View FHM: Navigate to ```localhost:8000/home```
+
+* To View JSON responses from requests to Fantastic: Navigate to ```http://localhost:8000/stats```
+
+* To View Fantastic: Navigate to ```localhost:12345```
+
+
+## Built Using: 
+
+> Flask: 
+
+Python Web-Framework - selected for efficiency, simplicity, and work with an unopinionated framework to have more control over framework
+
+> Threading 
+
+Using threading allowed the app to execute two processes simulatenously so I could query localhost:12345 and run localhost:8000 to display findings
+
+> Infinite Loop 
+
+Made queries to Fantastic in seven second intervals using time.sleep(). The request would return a status code of either 200 for success or 500 for fail
+
+> Front End 
+On the front end, an AJAX request is made to Fantastic. A JSON response is returned and iterated through. Depending on which status code is returned, the timestamp is pushed into an array corresponding to success or failure. These arrays are iterated through and rendered on the page to be displayed in the chart/table data.
+
+## Future Improvements: 
+> Live update chart and table
+> Convert epoch time to local date/time
+> Include unit tests
+> Replace 'undefined' failure times with empty strings 
+> Implement functionality to change the interval in which Fantastic is queried
+> Remove entries that happened more than five minutes prior to the current time being represented in FHM
+
+## Acknowledgements 
+
+Thank you for the opportunity to learn something new, I am grateful for what I learned during this challenge.
+
+## References: 
+I appreciate the Python community, especially on StackOverflow, teambeamers.com, Python and Flask Official Documentation, and various Medium Posts.
+
+--------------------------------------------------------------------------------------------------------------------
+
+# Assignment:
+
 A new fantastic challenger appears! This is a challenge for the development team to assess back-end, front-end, and automation skills.
 
 You are one of the first candidates to attempt this modified challenge. 
